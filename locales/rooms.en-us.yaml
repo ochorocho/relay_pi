@@ -1,0 +1,6 @@
+- id: "room.created.success"
+  translation: "Room was successfully created."
+- id: "room.updated.success"
+  translation: "Room was successfully updated."
+- id: "room.destroyed.success"
+  translation: "Room was successfully destroyed."

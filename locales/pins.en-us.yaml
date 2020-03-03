@@ -1,0 +1,6 @@
+- id: "pin.created.success"
+  translation: "Pin was successfully created."
+- id: "pin.updated.success"
+  translation: "Pin was successfully updated."
+- id: "pin.destroyed.success"
+  translation: "Pin was successfully destroyed."

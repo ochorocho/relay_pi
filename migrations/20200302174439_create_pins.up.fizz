@@ -1,0 +1,7 @@
+create_table("pins") {
+	t.Column("id", "integer", {"primary": true})
+	t.Column("name", "string", {})
+	t.Column("pin_number", "integer", {})
+	t.Column("device_id", "integer", {})
+	t.Timestamps()
+}
