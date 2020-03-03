@@ -26,10 +26,23 @@ var _ = grift.Namespace("db", func() {
 			{Name: "Kitchen", Type: "switch"},
 			{Name: "Storage Room", Type: "shutter"},
 		}
-		for _, m := range devices {
-			m.RoomID = room.ID
-			if err := models.DB.Create(&m); err != nil {
+		for _, device := range devices {
+			device.RoomID = room.ID
+			if err := models.DB.Create(&device); err != nil {
 				return errors.WithStack(err)
+			}
+
+			pins := models.Pins{
+				{Name: "GPIO " + device.Name, PinNumber: 8},
+				{Name: "GPIO " + device.Name, PinNumber: 10},
+				{Name: "GPIO " + device.Name, PinNumber: 12},
+			}
+
+			for _, pin := range pins {
+				pin.DeviceID = device.ID
+				if err := models.DB.Create(&pin); err != nil {
+					return errors.WithStack(err)
+				}
 			}
 		}
 
@@ -46,10 +59,23 @@ var _ = grift.Namespace("db", func() {
 			{Name: "Kids bedroom 1", Type: "switch"},
 			{Name: "Kids bedroom 1", Type: "shutter"},
 		}
-		for _, m := range devices2 {
-			m.RoomID = room2.ID
-			if err := models.DB.Create(&m); err != nil {
+		for _, device := range devices2 {
+			device.RoomID = room2.ID
+			if err := models.DB.Create(&device); err != nil {
 				return errors.WithStack(err)
+			}
+
+			pins := models.Pins{
+				{Name: "GPIO " + device.Name, PinNumber: 23},
+				{Name: "GPIO " + device.Name, PinNumber: 24},
+				{Name: "GPIO " + device.Name, PinNumber: 25},
+			}
+
+			for _, pin := range pins {
+				pin.DeviceID = device.ID
+				if err := models.DB.Create(&pin); err != nil {
+					return errors.WithStack(err)
+				}
 			}
 		}
 
