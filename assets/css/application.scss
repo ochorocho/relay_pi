@@ -1,4 +1,7 @@
-@import "~bootstrap/scss/bootstrap.scss";
-@import "~@fortawesome/fontawesome-free/css/all.min.css";
+@import "settings";
+@import '~foundation-sites/scss/foundation';
+@import '~foundation-sites/scss/xy-grid/xy-grid';
 
-@import "buffalo";
+@import "global";
+@import "font";
+@import "tab";

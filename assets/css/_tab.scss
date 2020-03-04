@@ -1,0 +1,20 @@
+.tab__navigation {
+    @include menu-base;
+    @include menu-expand;
+
+    background: get-color(dark);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    .tab__navigation__item {
+        @include menu-icons;
+
+        color: get-color(light);
+        text-align: center;
+        min-height: 10vh;
+        box-shadow: inset 0px 0px 5px 4px #333333;
+    }
+}
+

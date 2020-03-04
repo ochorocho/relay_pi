@@ -16,8 +16,6 @@ require (
 	github.com/gobuffalo/suite v2.8.2+incompatible
 	github.com/gobuffalo/validate v2.0.4+incompatible
 	github.com/gobuffalo/x v0.1.0
-	github.com/gofrs/uuid v3.2.0+incompatible
-	github.com/golang/protobuf v1.3.1
 	github.com/markbates/grift v1.5.0
 	github.com/pkg/errors v0.9.1
 	github.com/unrolled/secure v1.0.7

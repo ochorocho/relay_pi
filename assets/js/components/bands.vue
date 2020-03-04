@@ -1,12 +1,14 @@
 <template>
     <div>
-        <h1 class="page-header">Bands</h1>
+        <h1 class="page-header">Room</h1>
+
+        <app-device></app-device>
 
         <ul class="list-unstyled">
-            <li v-for="band in bands">
-                <router-link :to='{name: "showBand", params: {id: band.id}}'>
+            <li v-for="room in rooms">
+                <router-link :to='{name: "showBand", params: {id: room.id}}'>
                     <h2>
-                        {{ band.name }}
+                        {{ room.name }}
                     </h2>
                 </router-link>
             </li>
@@ -18,7 +20,7 @@
     export default {
         data() {
             return {
-                bands: []
+                rooms: []
             };
         },
 
@@ -32,10 +34,13 @@
 
         methods: {
             fetchData: function() {
-                let req = $.getJSON("/api/bands");
-                req.done(data => {
-                    this.bands = data;
-                });
+                let self = this;
+
+                fetch('/api/rooms/')
+                    .then((resp) => resp.json()) // Transform the data into json
+                    .then(function(data) {
+                        self.rooms = data
+                    })
             }
         }
     };

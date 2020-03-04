@@ -33,9 +33,9 @@ var _ = grift.Namespace("db", func() {
 			}
 
 			pins := models.Pins{
-				{Name: "GPIO " + device.Name, PinNumber: 8},
-				{Name: "GPIO " + device.Name, PinNumber: 10},
-				{Name: "GPIO " + device.Name, PinNumber: 12},
+				{Name: "GPIO 8", PinNumber: 8},
+				{Name: "GPIO 10", PinNumber: 10},
+				{Name: "GPIO 12", PinNumber: 12},
 			}
 
 			for _, pin := range pins {
@@ -66,9 +66,9 @@ var _ = grift.Namespace("db", func() {
 			}
 
 			pins := models.Pins{
-				{Name: "GPIO " + device.Name, PinNumber: 23},
-				{Name: "GPIO " + device.Name, PinNumber: 24},
-				{Name: "GPIO " + device.Name, PinNumber: 25},
+				{Name: "GPIO 23", PinNumber: 23},
+				{Name: "GPIO 24", PinNumber: 24},
+				{Name: "GPIO 25", PinNumber: 25},
 			}
 
 			for _, pin := range pins {

@@ -39,10 +39,10 @@ func (v DevicesResource) List(c buffalo.Context) error {
 
 	// Paginate results. Params "page" and "per_page" control pagination.
 	// Default values are "page=1" and "per_page=20".
-	q := tx.PaginateFromParams(c.Params())
+	//q := tx.PaginateFromParams(c.Params())
 
 	// Retrieve all Devices from the DB
-	if err := q.Eager().All(devices); err != nil {
+	if err := tx.Eager().All(devices); err != nil {
 		return err
 	}
 
