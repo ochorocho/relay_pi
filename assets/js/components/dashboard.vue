@@ -40,9 +40,8 @@
                 let self = this;
 
                 fetch('/api/rooms/')
-                    .then((resp) => resp.json()) // Transform the data into json
+                    .then((resp) => resp.json())
                     .then(function(data) {
-                        console.log(data)
                         self.rooms = data
                     })
             }
