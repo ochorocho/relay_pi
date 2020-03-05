@@ -21,6 +21,9 @@
 
 <script charset="utf-8">
     export default {
+        mounted() {
+            this.$Progress.start()
+        },
         data() {
             return {
                 rooms: []
@@ -43,6 +46,7 @@
                     .then((resp) => resp.json())
                     .then(function(data) {
                         self.rooms = data
+                        self.$Progress.finish()
                     })
             }
         }
