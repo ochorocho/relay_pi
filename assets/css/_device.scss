@@ -1,0 +1,47 @@
+.devices {
+    @include xy-grid-container;
+    @include xy-grid;
+}
+
+.devices__item {
+    @include xy-gutters;
+    @include xy-cell-size(6);
+
+    @include breakpoint(medium) {
+        @include xy-cell-size(4);
+    }
+
+    color: get-color(white);
+    background: lighten(get-color(dark), 20%);
+    list-style: none;
+    margin-bottom: $grid-gutter-width;
+    text-align: center;
+}
+
+.devives__inner {
+    padding: $grid-gutter-width;
+}
+
+.devices__title {
+    padding: $grid-gutter-width 0;
+}
+
+.devices__buttongroup {
+    @include button-group('.devices__button--on, .devices__button--off');
+    @include button-group-expand('.devices__button--on, .devices__button--off');
+    margin-bottom: 0;
+
+    .devices__button--on, .devices__button--off {
+        @include button($expand: true, $background: get-color(light), $background-hover: scale-color(get-color(light), $lightness: -15%));
+        margin-bottom: 0;
+    }
+
+    .devices__button--off {
+        @include button($background: get-color(dark), $background-hover: scale-color(get-color(dark), $lightness: -15%));
+        margin-bottom: 0;
+    }
+}
+
+.vue-slider-process {
+    background: transparent;
+}

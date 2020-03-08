@@ -1,0 +1,26 @@
+.header {
+    @include top-bar-container;
+    color: get-color(light);
+
+    .bm-burger-button {
+        position: relative;
+        top: 0;
+        left: 0;
+
+        .bm-burger-bars {
+            background: get-color(light);
+            height: 10%
+        }
+    }
+
+    .bm-cross-button {
+        .bm-cross {
+            height: 24px !important;
+        }
+    }
+
+    .header__icon {
+        width: 20px;
+        height: auto;
+    }
+}

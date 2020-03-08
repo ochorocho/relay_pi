@@ -1,7 +1,16 @@
-@import "settings";
 @import '~foundation-sites/scss/foundation';
 @import '~foundation-sites/scss/xy-grid/xy-grid';
+@import "~foundation-sites/scss/util/mixins";
+@import "settings";
+
+@import "~vue-slider-component/theme/default.css";
+@import "~wovue-off-canvas/dist/off-canvas.css";
 
 @import "global";
 @import "font";
 @import "tab";
+@import "header";
+@import "device";
+@import "list";
+@import "new";
+@import "form";

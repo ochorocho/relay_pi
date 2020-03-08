@@ -1,0 +1,41 @@
+.new-item label, .new-item__actions {
+    @include xy-grid-container;
+    @include xy-grid;
+
+    padding-top: $grid-gutter-width / 2;
+    padding-bottom: $grid-gutter-width / 2;
+    border-bottom: 1px solid get-color(light);
+}
+
+
+.new-item__label, .new-item__field {
+    padding: $grid-gutter-width / 2;
+}
+
+.new-item__label, .new-item__field {
+    @include xy-cell-size(12);
+
+    @include breakpoint(medium) {
+        @include xy-cell-size(6);
+    }
+}
+
+.new-item__actions {
+    border: none;
+
+    .new-item__label, .new-item__field {
+        @include xy-cell-size(6);
+    }
+}
+
+.new-item__cancel {
+    @include button($expand: true, $background: get-color(alert), $background-hover: scale-color(get-color(alert), $lightness: -15%));
+    margin-bottom: 0;
+    padding: 0.85em 0
+}
+
+.new-item__save {
+    @include button($expand: true, $background: get-color(success), $background-hover: scale-color(get-color(success), $lightness: -15%));
+    margin-bottom: 0;
+    padding: 0.85em 0
+}

@@ -1,19 +1,15 @@
 <template>
     <div>
-        <h1 class="page-header">Room</h1>
+        <app-header :title="`Dashboard`"></app-header>
 
         <ul class="tab__navigation">
-            <li v-for="room in rooms">
-                <router-link class="tab__navigation__item" :to='{name: "showBand", params: {id: room.id}}'>
-                    {{ room.name }}
-                </router-link>
+            <li class="tab__navigation__item" v-for="room in rooms" v-on:click="switchTab('tab' + room.id)">
+                {{ room.name }}
             </li>
         </ul>
-        <div class="tab__content">
-            <div v-for="room in rooms">
-                <div :id="'tab' + room.id">
-                    <app-device :devices="room.devices"></app-device>
-                </div>
+        <div class="tab__content" v-for="(room, index) in rooms">
+            <div class="tab" :id="'tab' + room.id" :class="{ 'tab--hidden' : index > 0}">
+                <app-device :devices="room.devices"></app-device>
             </div>
         </div>
     </div>
@@ -39,6 +35,15 @@
         },
 
         methods: {
+            switchTab(tab) {
+                let all = document.querySelectorAll('.tab__content .tab');
+                $.each(all, function(key, value) {
+                    value.style.display = 'none'
+                });
+
+                let currentTab = document.querySelector('#' + tab);
+                currentTab.style.display = 'block'
+            },
             fetchData: function() {
                 let self = this;
 

@@ -17,10 +17,15 @@
     "jquery-ujs": "~1.2.2",
     "popper.js": "^1.14.4",
     "vue": "^2.6.11",
+    "vue-burger-menu": "^2.0.4",
     "vue-loader": "^15.9.0",
+    "vue-offcanvas": "^0.0.3",
     "vue-progressbar": "^0.7.5",
     "vue-router": "^3.1.6",
-    "vue-template-compiler": "^2.6.11"
+    "vue-slide-tab": "^2.0.0",
+    "vue-slider-component": "^3.1.1",
+    "vue-template-compiler": "^2.6.11",
+    "wovue-off-canvas": "^1.4.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0",

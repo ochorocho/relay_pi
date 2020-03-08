@@ -1,5 +1,6 @@
 $foundation-palette: (
         dark: #333,
+        white: #fff,
         light: #ababab,
         primary: #1779ba,
         secondary: #767676,
@@ -7,3 +8,12 @@ $foundation-palette: (
         warning: #ffae00,
         alert: #cc4b37,
 );
+
+$grid-margin-gutters: (
+        small: 15px,
+        medium: 15px
+);
+
+
+$topbar-background: get-color('dark');
+$grid-gutter-width: 30px / 2;

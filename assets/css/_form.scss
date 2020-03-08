@@ -1,0 +1,15 @@
+select {
+    @include form-select;
+
+    width: 100%;
+    margin-bottom: 0;
+}
+
+input {
+    @include form-element;
+    margin-bottom: 0;
+}
+
+option {
+    font-family: Arial;
+}

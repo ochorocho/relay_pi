@@ -1,0 +1,52 @@
+.list__new {
+    @include button($background: get-color(success), $background-hover: scale-color(get-color(success), $lightness: -15%));
+    margin: 0 0 0 0;
+    text-decoration: none;
+}
+
+.list {
+
+    margin-top: $grid-gutter-width;
+}
+.list__item, .list__item--head {
+    @include xy-grid-container;
+    @include xy-grid;
+
+    padding: $grid-gutter-width / 2 0;
+    border-bottom: 1px solid get-color(light);
+}
+
+.list__item--head {
+    background: get-color(light);
+    margin-bottom: $grid-gutter-width;
+}
+
+.list__item__name, .list__item__number, .list__item__action {
+    @include xy-gutters;
+}
+
+.list__item__name {
+    @include xy-cell-size(4);
+}
+.list__item__number {
+    @include xy-cell-size(4);
+}
+
+.list__item__action {
+    @include xy-cell-size(4);
+
+    text-align: right;
+}
+
+.list__item__edit, .list__item__delete {
+    margin: 0 0 0 0;
+}
+
+.list__item__edit {
+    @include button($background: get-color(success), $background-hover: scale-color(get-color(success), $lightness: -15%));
+    margin: 0 0 0 0;
+}
+.list__item__delete {
+    @include button($background: get-color(alert), $background-hover: scale-color(get-color(alert), $lightness: -15%));
+    margin: 0 0 0 0;
+}
