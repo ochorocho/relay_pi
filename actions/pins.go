@@ -86,7 +86,7 @@ func (v PinsResource) Create(c buffalo.Context) error {
 		return c.Render(http.StatusUnprocessableEntity, r.JSON(verrs))
 	}
 
-	return c.Render(200, r.JSON(pin))
+	return c.Render(http.StatusCreated, r.JSON(pin))
 }
 
 // Update changes a Pin in the DB. This function is mapped to

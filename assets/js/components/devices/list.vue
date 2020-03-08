@@ -1,6 +1,6 @@
 <template>
     <div>
-        <app-header :title="`Devices`"></app-header>
+        <app-header :title="`Devices`" link="/devices/new"></app-header>
 
         <div class="list">
             <div class="list__item--head">
@@ -12,8 +12,8 @@
                 <div class="list__item__name">{{device.name}}</div>
                 <div class="list__item__number">{{device.room.name}}</div>
                 <div class="list__item__action">
-                    <span class="list__item__edit"></span>
-                    <span class="list__item__delete"></span>
+                    <router-link class="list__item__edit" :to="`/devices/${device.id}/edit`">e</router-link>
+                    <span v-on:click="deleteDevice(device.id)" class="list__item__delete">d</span>
                 </div>
             </div>
         </div>
@@ -32,6 +32,23 @@
             this.fetchData();
         },
         methods: {
+            deleteDevice(id) {
+                let self = this;
+                self.$Progress.start()
+
+                console.log(id)
+
+                fetch(`/api/devices/${id}`, {
+                    method: 'delete'
+                }).then(function(resp) {
+                    if(resp.status == 200) {
+                        self.fetchData();
+                        self.$Progress.finish()
+                    } else {
+                        alert('Failed to delete item')
+                    }
+                })
+            },
             fetchData: function() {
                 let self = this;
 

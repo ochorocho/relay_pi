@@ -1,6 +1,6 @@
 <template>
     <div>
-        <app-header :title="`Groups`"></app-header>
+        <app-header :title="`Groups`" link="/groups/new"></app-header>
 
         <div class="list">
             <div class="list__item--head">
