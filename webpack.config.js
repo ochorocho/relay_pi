@@ -1,3 +1,4 @@
+const path = require("path");
 const Webpack = require("webpack");
 const Glob = require("glob");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
@@ -7,6 +8,7 @@ const CleanObsoleteChunks = require('webpack-clean-obsolete-chunks');
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const LiveReloadPlugin = require('webpack-livereload-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const IconfontPlugin = require('iconfont-plugin-webpack');
 
 const configurator = {
   entries: function(){
@@ -40,6 +42,19 @@ const configurator = {
   plugins() {
     var plugins = [
       new CleanObsoleteChunks(),
+      new IconfontPlugin({
+        src: './svg/',
+        family: 'iconfont',
+        fontPath: '../hooray/',
+        dest: {
+          font: './assets/icon/[family].[type]',
+          css: './assets/css/_[family].scss'
+        },
+        watch: {
+          pattern: './svg/**/*.svg', // required - watch these files to reload
+          cwd: undefined // optional - current working dir for watching
+        }
+      }),
       new Webpack.ProvidePlugin({$: "jquery",jQuery: "jquery"}),
       new MiniCssExtractPlugin({filename: "[name].[contenthash].css"}),
       new CopyWebpackPlugin([{from: "./assets",to: ""}], {copyUnmodified: true,ignore: ["css/**", "js/**", "src/**"] }),

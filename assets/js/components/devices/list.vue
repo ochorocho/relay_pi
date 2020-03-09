@@ -10,7 +10,7 @@
             </div>
             <div class="list__item" v-for="(device, index) in devices">
                 <div class="list__item__name">{{device.name}}</div>
-                <div class="list__item__number">{{device.room.name}}</div>
+                <div class="list__item__number">{{device.group.name}}</div>
                 <div class="list__item__action">
                     <router-link class="list__item__edit" :to="`/devices/${device.id}/edit`">e</router-link>
                     <span v-on:click="deleteDevice(device.id)" class="list__item__delete">d</span>
@@ -35,8 +35,6 @@
             deleteDevice(id) {
                 let self = this;
                 self.$Progress.start()
-
-                console.log(id)
 
                 fetch(`/api/devices/${id}`, {
                     method: 'delete'

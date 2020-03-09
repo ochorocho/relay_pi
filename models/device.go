@@ -13,8 +13,8 @@ type Device struct {
 	ID        int       `json:"id" db:"id"`
 	Name      string    `json:"name" db:"name"`
 	Type      string    `json:"type" db:"type"`
-	RoomID    int       `json:"room_id" db:"room_id"`
-	Room      *Room     `json:"room,omitempty" belongs_to:"room"`
+	GroupID   int       `json:"group_id" db:"group_id"`
+	Group     *Group    `json:"group,omitempty" belongs_to:"group"`
 	Pins      []Pin     `json:"pins,omitempty" has_many:"pins"`
 	CreatedAt time.Time `json:"created_at" db:"created_at"`
 	UpdatedAt time.Time `json:"updated_at" db:"updated_at"`

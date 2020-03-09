@@ -28,7 +28,7 @@
             <label>
                 <span class="new-item__label">Belongs to group</span>
                 <span class="new-item__field">
-                    <select v-model="device.room_id">
+                    <select v-model="device.group_id">
                         <option value="0">select ...</option>
                         <template v-for="group in groups">
                             <template v-if="group.id === group.room_id">
@@ -76,7 +76,6 @@
                 let self = this;
                 self.$Progress.start()
 
-                console.log(JSON.stringify(this.device))
                 fetch(`/api/devices/${id}`, {
                     method: 'put',
                     headers: {
@@ -85,8 +84,6 @@
                     body: JSON.stringify(this.device)
                 })
                     .then((resp) => {
-                        console.log(resp)
-
                         if (resp.status == 200) {
                             self.$router.push('/devices')
                             self.$Progress.finish()

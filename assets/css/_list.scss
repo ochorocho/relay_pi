@@ -44,6 +44,7 @@
 
 .list__item__edit {
     @include button($background: get-color(success), $background-hover: scale-color(get-color(success), $lightness: -15%));
+    @include iconfont('accessible-icon');
     margin: 0 0 0 0;
 }
 .list__item__delete {

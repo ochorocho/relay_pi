@@ -72,8 +72,6 @@
                 let self = this;
                 self.$Progress.start()
 
-                console.log(JSON.stringify(this.pin))
-
                 fetch(`/api/pins/${id}`, {
                     method: 'put',
                     headers: {

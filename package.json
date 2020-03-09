@@ -13,6 +13,7 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.27",
     "bootstrap": "4.3.1",
     "foundation-sites": "^6.6.1",
+    "iconfont-plugin-webpack": "^1.1.4",
     "jquery": "~3.4.1",
     "jquery-ujs": "~1.2.2",
     "popper.js": "^1.14.4",
@@ -25,6 +26,8 @@
     "vue-slide-tab": "^2.0.0",
     "vue-slider-component": "^3.1.1",
     "vue-template-compiler": "^2.6.11",
+    "vusion-webfonts-generator": "^0.4.1",
+    "webpack-webfont": "^0.0.1-alpha.10",
     "wovue-off-canvas": "^1.4.0"
   },
   "devDependencies": {

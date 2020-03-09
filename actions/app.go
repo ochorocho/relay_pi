@@ -62,7 +62,7 @@ func App() *buffalo.App {
 
 		api := app.Group("/api")
 		api.Resource("/pins", PinsResource{})
-		api.Resource("/rooms", RoomsResource{})
+		api.Resource("/groups", GroupsResource{})
 		api.Resource("/devices", DevicesResource{})
 
 		//band := api.Resource("/bands", BandsResource{&buffalo.BaseResource{}})

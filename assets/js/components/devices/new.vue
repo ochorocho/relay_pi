@@ -21,7 +21,7 @@
             <label>
                 <span class="new-item__label">Belongs to group</span>
                 <span class="new-item__field">
-                    <select v-model="device.room_id">
+                    <select v-model="device.group_id">
                         <option value="0">select ...</option>
                         <option :value="group.id" v-for="group in groups">{{group.name}}</option>
                     </select>

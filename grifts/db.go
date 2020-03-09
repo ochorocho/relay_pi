@@ -14,20 +14,20 @@ var _ = grift.Namespace("db", func() {
 			return errors.WithStack(err)
 		}
 
-		room := &models.Room{
+		group := &models.Group{
 			Name:        "Ground Floor",
 			Description: "All devices on Ground Floor",
 		}
-		if err := models.DB.Create(room); err != nil {
+		if err := models.DB.Create(group); err != nil {
 			return errors.WithStack(err)
 		}
 		devices := models.Devices{
-			{Name: "Living Room", Type: "dimmer"},
+			{Name: "Living Group", Type: "dimmer"},
 			{Name: "Kitchen", Type: "switch"},
-			{Name: "Storage Room", Type: "shutter"},
+			{Name: "Storage Group", Type: "shutter"},
 		}
 		for _, device := range devices {
-			device.RoomID = room.ID
+			device.GroupID = group.ID
 			if err := models.DB.Create(&device); err != nil {
 				return errors.WithStack(err)
 			}
@@ -46,21 +46,21 @@ var _ = grift.Namespace("db", func() {
 			}
 		}
 
-		room2 := &models.Room{
+		group2 := &models.Group{
 			Name:        "Upstairs",
 			Description: "All devices Upstairs",
 		}
 
-		if err := models.DB.Create(room2); err != nil {
+		if err := models.DB.Create(group2); err != nil {
 			return errors.WithStack(err)
 		}
 		devices2 := models.Devices{
-			{Name: "Bedroom", Type: "dimmer"},
-			{Name: "Kids bedroom 1", Type: "switch"},
-			{Name: "Kids bedroom 1", Type: "shutter"},
+			{Name: "Bedgroup", Type: "dimmer"},
+			{Name: "Kids bedgroup 1", Type: "switch"},
+			{Name: "Kids bedgroup 1", Type: "shutter"},
 		}
 		for _, device := range devices2 {
-			device.RoomID = room2.ID
+			device.GroupID = group2.ID
 			if err := models.DB.Create(&device); err != nil {
 				return errors.WithStack(err)
 			}

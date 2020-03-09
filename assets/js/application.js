@@ -3,6 +3,8 @@ import VueRouter from "router"
 Vue.use(VueRouter)
 
 import GroupListComponent from "./components/groups/list.vue"
+import GroupNewComponent from "./components/groups/new.vue"
+import GroupEditComponent from "./components/groups/edit.vue"
 import DeviceListComponent from "./components/devices/list.vue"
 import DeviceNewComponent from "./components/devices/new.vue"
 import DeviceEditComponent from "./components/devices/edit.vue"
@@ -35,6 +37,8 @@ Vue.prototype.$log = function(message) {
 };
 
 const routes = [
+    {path: "/groups/new", component: GroupNewComponent, name: "newGroup"},
+    {path: "/groups/:id/edit", component: GroupEditComponent, name: "editGroup"},
     {path: "/groups/", component: GroupListComponent, name: "listGroup"},
     {path: "/devices/new", component: DeviceNewComponent, name: "newDevice"},
     {path: "/devices/:id/edit", component: DeviceEditComponent, name: "editDevice"},

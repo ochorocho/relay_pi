@@ -1,8 +1,0 @@
-<div class="py-4 mb-2">
-  <h3 class="d-inline-block">Edit Room</h3>
-</div>
-
-<%= formFor(room, {action: roomPath({ room_id: room.ID }), method: "PUT"}) { %>
-  <%= partial("rooms/form.html") %>
-  <%= linkTo(roomPath({ room_id: room.ID }), {class: "btn btn-warning", "data-confirm": "Are you sure?", body: "Cancel"}) %>
-<% } %>

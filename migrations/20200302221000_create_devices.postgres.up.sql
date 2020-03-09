@@ -6,6 +6,6 @@ CREATE TABLE devices (
 	"type" switch_types,
 	"created_at" timestamp NOT NULL,
 	"updated_at" timestamp NOT NULL,
-    "room_id" integer,
-    CONSTRAINT room_id FOREIGN KEY (room_id) REFERENCES rooms (id)
+    "group_id" integer,
+    CONSTRAINT group_id FOREIGN KEY (group_id) REFERENCES groups (id)
 )
