@@ -24,4 +24,4 @@ jhw.*
 dist/
 generated/
 .vendor/
-
+assets/css/_iconfont.scss
