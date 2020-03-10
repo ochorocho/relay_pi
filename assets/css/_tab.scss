@@ -7,14 +7,21 @@
     bottom: 0;
     left: 0;
     right: 0;
+    z-index: 50;
 
     .tab__navigation__item {
-        @include menu-icons;
+        @include iconfont(building);
+        @include ellipsis;
 
+        &:before {
+            display: block;
+        }
+
+        cursor: pointer;
         color: get-color(light);
         text-align: center;
-        min-height: 10vh;
-        box-shadow: inset 0px 0px 5px 4px #333333;
+        padding: 5px;
+        text-overflow: ellipsis;
     }
 }
 

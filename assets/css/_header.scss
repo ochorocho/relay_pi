@@ -1,9 +1,8 @@
-
-
 .header {
     @include top-bar-container;
     color: get-color(light);
-    height: 28px;
+    height: $top-bar-height;
+    position: relative;
 
     .list__new {
         @include app-button($icon: 'plus-square');
@@ -11,6 +10,7 @@
         position: absolute;
         right: 0;
         top: 0;
+        bottom: 0;
     }
 
     .bm-burger-button {

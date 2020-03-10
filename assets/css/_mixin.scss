@@ -8,3 +8,9 @@
   margin: 0 0 0 0;
   text-decoration: none;
 }
+
+@mixin ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

@@ -23,12 +23,15 @@
 }
 
 .devices__title {
-    padding: $grid-gutter-width 0;
+    @include ellipsis;
+
+    padding: $grid-gutter-width / 3 0;
 }
 
 .devices__buttongroup {
     @include button-group('.devices__button--on, .devices__button--off');
     @include button-group-expand('.devices__button--on, .devices__button--off');
+
     margin-bottom: 0;
 
     .devices__button--on, .devices__button--off {
