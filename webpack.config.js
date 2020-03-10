@@ -1,4 +1,5 @@
 const path = require("path");
+const fs = require("fs");
 const Webpack = require("webpack");
 const Glob = require("glob");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
@@ -46,7 +47,11 @@ const configurator = {
         src: './svg/',
         family: 'iconfont',
         fontPath: '../hooray/',
+        types: 'ttf',
+        order: 'ttf',
         dest: {
+          types: 'ttf',
+          order: 'ttf',
           font: './assets/icon/[family].[type]',
           css: './assets/css/_[family].scss'
         },

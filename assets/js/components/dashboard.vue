@@ -47,7 +47,7 @@
             fetchData: function() {
                 let self = this;
 
-                fetch('/api/rooms/')
+                fetch('/api/groups/')
                     .then((resp) => resp.json())
                     .then(function(data) {
                         self.rooms = data
