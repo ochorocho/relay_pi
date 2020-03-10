@@ -4,7 +4,7 @@
         <span ref="appTitle" id="page__title">{{ title }}</span>
 
         <div v-if="link">
-            <router-link class="list__new" :to="`${link}`">+</router-link>
+            <router-link class="list__new" :to="`${link}`"></router-link>
         </div>
         <div v-else>
             <img class="header__icon" src="/assets/images/logo.svg"/>

@@ -12,8 +12,8 @@
                 <div class="list__item__name">{{pin.name}}</div>
                 <div class="list__item__number">{{pin.pin_number}}</div>
                 <div class="list__item__action">
-                    <router-link class="list__item__edit" :to="`/pins/${pin.id}/edit`">e</router-link>
-                    <span v-on:click="deletePin(pin.id)" class="list__item__delete">d</span>
+                    <router-link class="list__item__edit" :to="`/pins/${pin.id}/edit`"></router-link>
+                    <span v-on:click="deletePin(pin.id)" class="list__item__delete"></span>
                 </div>
             </div>
         </div>

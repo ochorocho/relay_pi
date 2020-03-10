@@ -1,11 +1,13 @@
 @font-face {
     font-family: oswald;
     src: url(../font/Oswald-VariableFont_wght.ttf);
+    font-variation-settings: 'wght' 300;
     font-weight: normal;
 }
 
 @font-face {
     font-family: oswald;
     src: url(../font/Oswald-VariableFont_wght.ttf);
+    font-variation-settings: 'wght' 600;
     font-weight: bold;
 }

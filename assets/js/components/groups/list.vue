@@ -12,8 +12,8 @@
                 <div class="list__item__name">{{group.name}}</div>
                 <div class="list__item__number">{{group.description}}</div>
                 <div class="list__item__action">
-                    <router-link class="list__item__edit" :to="`/groups/${group.id}/edit`">e</router-link>
-                    <span v-on:click="deleteGroup(group.id)" class="list__item__delete">d</span>
+                    <router-link class="list__item__edit" :to="`/groups/${group.id}/edit`"></router-link>
+                    <span v-on:click="deleteGroup(group.id)" class="list__item__delete"></span>
                 </div>
             </div>
         </div>

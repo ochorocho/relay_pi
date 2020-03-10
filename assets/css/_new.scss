@@ -29,13 +29,11 @@
 }
 
 .new-item__cancel {
-    @include button($expand: true, $background: get-color(alert), $background-hover: scale-color(get-color(alert), $lightness: -15%));
-    margin-bottom: 0;
+    @include app-button(get-color(alert), get-color(alert), $expand: true);
     padding: 0.85em 0
 }
 
 .new-item__save {
-    @include button($expand: true, $background: get-color(success), $background-hover: scale-color(get-color(success), $lightness: -15%));
-    margin-bottom: 0;
+    @include app-button(get-color(success), get-color(success), $expand: true);
     padding: 0.85em 0
 }

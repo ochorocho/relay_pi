@@ -46,12 +46,7 @@ const configurator = {
       new IconfontPlugin({
         src: './svg/',
         family: 'iconfont',
-        fontPath: '../hooray/',
-        types: 'ttf',
-        order: 'ttf',
         dest: {
-          types: 'ttf',
-          order: 'ttf',
           font: './assets/icon/[family].[type]',
           css: './assets/css/_[family].scss'
         },

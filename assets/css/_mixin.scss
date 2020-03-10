@@ -1,0 +1,10 @@
+@mixin app-button($background: get-color(dark), $background-hover: get-color(dark), $icon: false, $expand: false) {
+  @include button($expand: $expand, $background: $background, $background-hover: scale-color($background-hover, $lightness: -15%));
+
+  @if($icon) {
+    @include iconfont($icon);
+  }
+
+  margin: 0 0 0 0;
+  text-decoration: none;
+}
