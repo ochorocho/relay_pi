@@ -5,7 +5,21 @@
     <meta charset="utf-8">
     <title>Relay Pi</title>
     <%= stylesheetTag("application.css") %>
+
+    <link rel="manifest" href="/assets/app-manifest.json">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Rel(a)y Pi">
+    <meta name="apple-mobile-web-app-title" content="Rel(a)y Pi">
+    <meta name="theme-color" content="#333333">
+    <meta name="msapplication-navbutton-color" content="#333333">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="msapplication-starturl" content="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
     <link rel="icon" type="image/svg+xml" href="<%= assetPath("images/logo.svg") %>">
+    <link rel="apple-touch-icon" type="image/svg+xml" href="<%= assetPath("images/logo.svg") %>">
   </head>
   <body>
 

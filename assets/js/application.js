@@ -19,6 +19,16 @@ import OffcanvasComponent from "./components/offcanvas.vue"
 import VueProgressBar from 'vue-progressbar'
 import SliderComponent from './components/slider.vue'
 
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/assets/serviceWorker.47cb8477dc164e2b505e.js').then(registration => {
+            console.log('ServiceWorker registered: ', registration);
+        }).catch(registrationError => {
+            console.log('Failed to register ServiceWorker', registrationError);
+        });
+    });
+}
+
 Vue.component('app-device', DeviceComponent)
 Vue.component('app-header', HeaderComponent)
 Vue.component('app-offcanvas', OffcanvasComponent)
@@ -33,7 +43,7 @@ Vue.use(VueProgressBar, {
 
 Vue.prototype.$log = function(message) {
     let timeNow = '[' + new Date(Date.now()).toLocaleTimeString() + ']'
-    process.env.NODE_ENV == 'development' && console.log(timeNow + ' ' + message)
+    process.env.NODE_ENV == 'development' && console.log(timeNow + ' ' + JSON.stringify(message))
 };
 
 const routes = [

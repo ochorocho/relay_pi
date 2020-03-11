@@ -53,7 +53,6 @@
                 fetch('/api/devices/')
                     .then((resp) => resp.json())
                     .then(function(data) {
-                        self.$log(data)
                         self.devices = data
                         self.$Progress.finish()
                     })
