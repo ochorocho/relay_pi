@@ -2,6 +2,7 @@ package actions
 
 import (
 	"github.com/gobuffalo/buffalo"
+	"github.com/gobuffalo/envy"
 	"net/http"
 )
 
@@ -9,5 +10,8 @@ import (
 func ServiceWorkerHandler(c buffalo.Context) error {
 	c.Response().Header().Set("Service-Worker-Allowed", "/")
 
-	return c.Render(http.StatusOK, r.JavaScript("serviceWorker.js"))
+	goEnv := envy.Get("GO_ENV", "wuseldusel")
+	c.Set("environment", goEnv)
+
+	return c.Render(http.StatusOK, r.JavaScript("serviceWorker.plush.js"))
 }

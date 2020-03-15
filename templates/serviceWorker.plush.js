@@ -1,3 +1,9 @@
+function logger(text) {
+    if('<%= environment %>' === 'development') {
+        console.log('[ServiceWorker] ' + text)
+    }
+}
+
 let cacheName = 'v2';
 let cacheFiles = [
     '/',
@@ -21,20 +27,20 @@ let cacheFiles = [
 self.addEventListener('install', function(e) {
     e.waitUntil(
         caches.open(cacheName).then(function(cache) {
-            console.log('[ServiceWorker] Caching cacheFiles');
+            logger('Caching cacheFiles');
             return cache.addAll(cacheFiles);
         })
     );
 });
 
 self.addEventListener('activate', function(e) {
-    console.log('[ServiceWorker] Activated');
+    logger('Activated');
 
     e.waitUntil(
         caches.keys().then(function(cacheNames) {
             return Promise.all(cacheNames.map(function(thisCacheName) {
                 if (thisCacheName !== cacheName) {
-                    console.log('[ServiceWorker] Removing Cached Files from Cache - ', thisCacheName);
+                    logger('Removing Cached Files from Cache - ' + thisCacheName);
                     return caches.delete(thisCacheName);
                 }
             }));
@@ -44,17 +50,16 @@ self.addEventListener('activate', function(e) {
     return self.clients.claim();
 });
 
-
 self.addEventListener('fetch', function(e) {
-    console.log('[ServiceWorker] Fetch', e.request.url);
+    logger('Fetch', e.request.url);
     e.respondWith(
         caches.match(e.request)
             .then(function(response) {
                 if ( response ) {
-                    console.log("[ServiceWorker] Found in Cache", e.request.url);
+                    logger('Found in cache ' + e.request.url);
                     return response;
                 } else {
-                    console.log("[ServiceWorker] Not found in cache ... ", e.request.url);
+                    logger('Not found in cache ' + e.request.url);
                 }
 
                 let requestClone = e.request.clone();
@@ -62,7 +67,7 @@ self.addEventListener('fetch', function(e) {
                     .then(function(response) {
 
                         if ( !response ) {
-                            console.log("[ServiceWorker] No response from fetch ")
+                            logger('No response from fetch')
                             return response;
                         }
 
@@ -70,14 +75,14 @@ self.addEventListener('fetch', function(e) {
 
                         caches.open(cacheName).then(function(cache) {
                             cache.put(e.request, responseClone);
-                            console.log('[ServiceWorker] New Data Cached', e.request.url);
+                            logger('New Data Cached ' + e.request.url);
                             return response;
 
                         });
 
                     })
                     .catch(function(err) {
-                        console.log('[ServiceWorker] Error Fetching & Caching New Data', err);
+                        logger('Error Fetching & Caching New Data', err);
                     });
             })
     );
