@@ -55,7 +55,6 @@
                 fetch('/api/groups/')
                     .then((resp) => resp.json())
                     .then(function(data) {
-                        console.log(data)
                         self.groups = data
                         self.$Progress.finish()
                     })

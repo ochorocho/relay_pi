@@ -37,8 +37,8 @@
         methods: {
             switchTab(tab) {
                 let all = document.querySelectorAll('.tab__content .tab');
-                $.each(all, function(key, value) {
-                    value.style.display = 'none'
+                all.forEach(element => {
+                    element.style.display = 'none'
                 });
 
                 let currentTab = document.querySelector('#' + tab);

@@ -6,7 +6,6 @@ import (
 	forcessl "github.com/gobuffalo/mw-forcessl"
 	paramlogger "github.com/gobuffalo/mw-paramlogger"
 	"github.com/unrolled/secure"
-
 	"relay_pi/models"
 
 	"github.com/gobuffalo/buffalo-pop/pop/popmw"
@@ -39,9 +38,10 @@ func App() *buffalo.App {
 			Env:         ENV,
 			SessionName: "_relay_pi_session",
 		})
+		app.Use(UserIPMiddleware)
 
 		// Automatically redirect to SSL
-		app.Use(forceSSL())
+		//app.Use(forceSSL())
 
 		// Log request parameters (filters apply).
 		app.Use(paramlogger.ParameterLogger)
@@ -65,13 +65,9 @@ func App() *buffalo.App {
 		api.Resource("/groups", GroupsResource{})
 		api.Resource("/devices", DevicesResource{})
 
-		//band := api.Resource("/bands", BandsResource{&buffalo.BaseResource{}})
-		//band.Resource("/members", MembersResource{&buffalo.BaseResource{}})
-
+		app.GET("/serviceworker.js", ServiceWorkerHandler)
 		app.GET("/{path:.+}", HomeHandler)
 		app.GET("/", HomeHandler)
-
-		//app.ServeFiles("/", assetsBox) // serve files from the public directory
 	}
 
 	return app
@@ -99,4 +95,18 @@ func forceSSL() buffalo.MiddlewareFunc {
 		SSLRedirect:     ENV == "production",
 		SSLProxyHeaders: map[string]string{"X-Forwarded-Proto": "https"},
 	})
+}
+
+//func forceServiceWorker() buffalo.MiddlewareFunc {
+//	return forceServiceWorker.Middleware(secure.Options{
+//		SSLProxyHeaders: map[string]string{"Service-Worker-Allowed": "/"},
+//	})
+//}
+
+// UserIPMiddleware gets the user IP and sets it to the context.
+func UserIPMiddleware(next buffalo.Handler) buffalo.Handler {
+	return func(c buffalo.Context) error {
+		c.Response().Header().Set("Service-Worker-Allowed", "/")
+		return next(c)
+	}
 }

@@ -10,13 +10,11 @@ const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const LiveReloadPlugin = require('webpack-livereload-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const IconfontPlugin = require('iconfont-plugin-webpack');
-const WorkboxWebpackPlugin = require("workbox-webpack-plugin");
 
 const configurator = {
     entries: function () {
         var entries = {
             application: [
-                './node_modules/jquery-ujs/src/rails.js',
                 './assets/css/application.scss',
             ],
         }
@@ -56,8 +54,7 @@ const configurator = {
                     cwd: undefined // optional - current working dir for watching
                 }
             }),
-            new Webpack.ProvidePlugin({$: "jquery", jQuery: "jquery"}),
-            new MiniCssExtractPlugin({filename: "[name].[contenthash].css"}),
+            new MiniCssExtractPlugin({filename: "[name].css"}),
             new CopyWebpackPlugin([{from: "./assets", to: ""}], {
                 copyUnmodified: true,
                 ignore: ["css/**", "js/**", "src/**"]
@@ -65,23 +62,6 @@ const configurator = {
             new Webpack.LoaderOptionsPlugin({minimize: true, debug: false}),
             new ManifestPlugin({fileName: "manifest.json"}),
             new VueLoaderPlugin(),
-            new WorkboxWebpackPlugin.GenerateSW({
-                // swSrc: path.join(process.cwd(), '/assets/js/serviceWorker.js'),
-                swDest: './serviceWorker.js',
-                clientsClaim: true,
-                skipWaiting: true,
-            })
-            // new WorkboxWebpackPlugin.InjectManifest({
-            //     swSrc: path.join(process.cwd(), '/assets/js/serviceWorker.js'),
-            //     swDest: './serviceWorker.js',
-            //     exclude: [
-            //         /\.map$/,
-            //         /manifest$/,
-            //         /\.htaccess$/,
-            //         /serviceWorker\.js$/,
-            //         /sw\.js$/,
-            //     ],
-            // }),
         ];
 
         return plugins
@@ -106,7 +86,6 @@ const configurator = {
                 {test: /\.jsx?$/, loader: "babel-loader", exclude: /node_modules/},
                 {test: /\.(woff|woff2|ttf|svg)(\?v=\d+\.\d+\.\d+)?$/, use: "url-loader"},
                 {test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, use: "file-loader"},
-                {test: require.resolve("jquery"), use: "expose-loader?jQuery!expose-loader?$"},
                 {test: /\.go$/, use: "gopherjs-loader"}
             ]
         }
@@ -123,7 +102,10 @@ const configurator = {
             mode: 'production',
             devtool: 'source-map',
             entry: configurator.entries(),
-            output: {filename: "[name].[hash].js", path: `${__dirname}/public/assets`},
+            output: {
+                filename: '[name].js',
+                path: `${__dirname}/public/assets`
+            },
             plugins: configurator.plugins(),
             module: configurator.moduleOptions(),
             resolve: {

@@ -6,7 +6,7 @@ require (
 	github.com/gobuffalo/envy v1.9.0
 	github.com/gobuffalo/fizz v1.9.8 // indirect
 	github.com/gobuffalo/flect v0.2.1 // indirect
-	github.com/gobuffalo/mw-csrf v1.0.0
+	github.com/gobuffalo/mw-csrf v1.0.0 // indirect
 	github.com/gobuffalo/mw-forcessl v0.0.0-20200131175327-94b2bd771862
 	github.com/gobuffalo/mw-i18n v1.0.0
 	github.com/gobuffalo/mw-paramlogger v1.0.0
