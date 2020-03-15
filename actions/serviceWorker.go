@@ -10,7 +10,7 @@ import (
 func ServiceWorkerHandler(c buffalo.Context) error {
 	c.Response().Header().Set("Service-Worker-Allowed", "/")
 
-	goEnv := envy.Get("GO_ENV", "wuseldusel")
+	goEnv := envy.Get("GO_ENV", "development")
 	c.Set("environment", goEnv)
 
 	return c.Render(http.StatusOK, r.JavaScript("serviceWorker.plush.js"))
