@@ -26,3 +26,4 @@ generated/
 .vendor/
 assets/css/_iconfont.scss
 assets/icon
+templates/serviceWorker.*

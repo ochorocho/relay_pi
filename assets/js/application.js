@@ -21,7 +21,6 @@ import SliderComponent from './components/slider.vue'
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
         navigator.serviceWorker.register('/serviceworker.js', { scope: '/' }).then(registration => {
-            // ServiceWorker registered successfully
         }).catch(registrationError => {
             console.log('Failed to register ServiceWorker', registrationError);
         });

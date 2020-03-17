@@ -43,18 +43,18 @@ const configurator = {
         var plugins = [
             new CleanObsoleteChunks(),
             new IconfontPlugin({
-                src: './svg/',
+                src: './assets/svg/',
                 family: 'iconfont',
                 dest: {
                     font: './assets/icon/[family].[type]',
                     css: './assets/css/_[family].scss'
                 },
                 watch: {
-                    pattern: './svg/**/*.svg', // required - watch these files to reload
-                    cwd: undefined // optional - current working dir for watching
+                    pattern: './svg/**/*.svg',
+                    cwd: undefined
                 }
             }),
-            new MiniCssExtractPlugin({filename: "[name].css"}),
+            new MiniCssExtractPlugin({filename: "[name].[contenthash].css"}),
             new CopyWebpackPlugin([{from: "./assets", to: ""}], {
                 copyUnmodified: true,
                 ignore: ["css/**", "js/**", "src/**"]
@@ -103,7 +103,9 @@ const configurator = {
             devtool: 'source-map',
             entry: configurator.entries(),
             output: {
-                filename: '[name].js',
+                filename: (chunkData) => {
+                    return chunkData.chunk.name === 'serviceWorker' ? '../../templates/[name].js': '[name].[hash].js';
+                },
                 path: `${__dirname}/public/assets`
             },
             plugins: configurator.plugins(),
