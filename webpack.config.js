@@ -54,7 +54,7 @@ const configurator = {
                     cwd: undefined
                 }
             }),
-            new MiniCssExtractPlugin({filename: "[name].[contenthash].css"}),
+            new MiniCssExtractPlugin({filename: "[name].css"}),
             new CopyWebpackPlugin([{from: "./assets", to: ""}], {
                 copyUnmodified: true,
                 ignore: ["css/**", "js/**", "src/**"]
@@ -98,13 +98,12 @@ const configurator = {
         const env = process.env.NODE_ENV || "development";
 
         var config = {
-            // mode: env,
-            mode: 'production',
+            mode: env,
             devtool: 'source-map',
             entry: configurator.entries(),
             output: {
                 filename: (chunkData) => {
-                    return chunkData.chunk.name === 'serviceWorker' ? '../../templates/[name].js': '[name].[hash].js';
+                    return chunkData.chunk.name === 'serviceWorker' ? '../../templates/[name].js': '[name].js';
                 },
                 path: `${__dirname}/public/assets`
             },

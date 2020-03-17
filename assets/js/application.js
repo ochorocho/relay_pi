@@ -18,13 +18,26 @@ import OffcanvasComponent from "./components/offcanvas.vue"
 import VueProgressBar from 'vue-progressbar'
 import SliderComponent from './components/slider.vue'
 
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/serviceworker.js', { scope: '/' }).then(registration => {
-        }).catch(registrationError => {
-            console.log('Failed to register ServiceWorker', registrationError);
+window.addEventListener('online',  updateOnlineStatus);
+window.addEventListener('offline', updateOnlineStatus);
+
+function updateOnlineStatus(event) {
+    var condition = navigator.onLine ? "online" : "offline";
+    document.body.className = condition;
+}
+
+let env = process.env.NODE_ENV || "development"
+console.log(env)
+
+if(process.env.NODE_ENV !== 'development') {
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('/serviceworker.js', { scope: '/' }).then(registration => {
+            }).catch(registrationError => {
+                console.log('Failed to register ServiceWorker', registrationError);
+            });
         });
-    });
+    }
 }
 
 Vue.component('app-device', DeviceComponent)

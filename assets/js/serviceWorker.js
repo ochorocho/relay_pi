@@ -22,6 +22,4 @@ if (workbox) {
             cacheName: 'pages',
         })
     );
-
-    console.log('huhasudahsud')
 }
