@@ -78,14 +78,13 @@ const configurator = {
                     test: /\.s[ac]ss$/,
                     use: [
                         MiniCssExtractPlugin.loader,
-                        {loader: "css-loader", options: {sourceMap: true}},
+                        {loader: "css-loader", options: {sourceMap: true, url: false}},
                         {loader: "sass-loader", options: {sourceMap: true}}
                     ]
                 },
                 {test: /\.tsx?$/, use: "ts-loader", exclude: /node_modules/},
                 {test: /\.jsx?$/, loader: "babel-loader", exclude: /node_modules/},
-                {test: /\.(woff|woff2|ttf|svg)(\?v=\d+\.\d+\.\d+)?$/, use: "url-loader"},
-                {test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, use: "file-loader"},
+                {test: /\.(woff|woff2|ttf|svg|eot)(\?v=\d+\.\d+\.\d+)?$/, use: "url-loader"},
                 {test: /\.go$/, use: "gopherjs-loader"}
             ]
         }
@@ -99,13 +98,18 @@ const configurator = {
 
         var config = {
             mode: env,
-            devtool: 'source-map',
+            devtool: (env === 'development') ? 'inline-source-map' : false,
             entry: configurator.entries(),
             output: {
                 filename: (chunkData) => {
                     return chunkData.chunk.name === 'serviceWorker' ? '../../templates/[name].js': '[name].js';
                 },
-                path: `${__dirname}/public/assets`
+                path: `${__dirname}/public/assets`,
+            },
+            optimization: {
+                splitChunks: {
+                    chunks: "initial",
+                }
             },
             plugins: configurator.plugins(),
             module: configurator.moduleOptions(),
@@ -115,7 +119,7 @@ const configurator = {
                     router$: `${__dirname}/node_modules/vue-router/dist/vue-router.esm.js`
                 },
                 extensions: ['.ts', '.js', '.json']
-            },
+            }
         }
 
         if (env === "development") {

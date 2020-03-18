@@ -4,7 +4,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
     <title>Relay Pi</title>
-    <%= stylesheetTag("application.css") %>
 
     <link rel="manifest" href="/assets/app-manifest.json">
 
@@ -28,6 +27,7 @@
       <%= yield %>
     </div>
 
+    <%= stylesheetTag("application.css") %>
     <%= javascriptTag("application.js") %>
   </body>
 </html>

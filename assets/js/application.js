@@ -2,6 +2,8 @@ import Vue from "vue"
 import VueRouter from "router"
 Vue.use(VueRouter)
 
+
+// const MyComponent = () => import("~/components/MyComponent.js");
 import GroupListComponent from "./components/groups/list.vue"
 import GroupNewComponent from "./components/groups/new.vue"
 import GroupEditComponent from "./components/groups/edit.vue"
@@ -26,8 +28,8 @@ function updateOnlineStatus(event) {
     document.body.className = condition;
 }
 
-let env = process.env.NODE_ENV || "development"
-console.log(env)
+const env = process.env.NODE_ENV || "development"
+env == 'development' && console.log('Node env "' + env + '"')
 
 if(process.env.NODE_ENV !== 'development') {
     if ('serviceWorker' in navigator) {
