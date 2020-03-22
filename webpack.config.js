@@ -98,18 +98,14 @@ const configurator = {
 
         var config = {
             mode: env,
-            devtool: (env === 'development') ? 'inline-source-map' : false,
             entry: configurator.entries(),
             output: {
                 filename: (chunkData) => {
-                    return chunkData.chunk.name === 'serviceWorker' ? '../../templates/[name].js': '[name].js';
+                    return chunkData.chunk.name === 'serviceWorker' ? '../../templates/[name].js': '[name].[contenthash].js';
                 },
-                path: `${__dirname}/public/assets`,
-            },
-            optimization: {
-                splitChunks: {
-                    chunks: "initial",
-                }
+                path: path.resolve(__dirname, 'public', 'assets'),
+                chunkFilename: 'chunk.[id].js',
+                publicPath: '../assets/',
             },
             plugins: configurator.plugins(),
             module: configurator.moduleOptions(),
@@ -129,7 +125,7 @@ const configurator = {
 
         const uglifier = new UglifyJsPlugin({
             uglifyOptions: {
-                beautify: false,
+                beautify: true,
                 mangle: {keep_fnames: true},
                 output: {comments: false},
                 compress: {}
@@ -137,7 +133,15 @@ const configurator = {
         })
 
         config.optimization = {
-            minimizer: [uglifier]
+            minimizer: [uglifier],
+            splitChunks: {
+                cacheGroups: {
+                    commons: {
+                        test: /[\\/]vue[\\/]/,
+                        chunks: "all",
+                    }
+                }
+            }
         }
 
         return config

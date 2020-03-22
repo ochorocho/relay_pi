@@ -1,4 +1,4 @@
-import workbox from "workbox-sw"
+require('workbox-sw')
 
 if (workbox) {
     workbox.routing.registerRoute(
