@@ -1,25 +1,30 @@
-require('workbox-sw')
+// importScripts('/node_modules/workbox-sw/build/workbox-sw.js');
 
-if (workbox) {
-    workbox.routing.registerRoute(
+// import {precaching} from 'workbox-precaching';
+import {registerRoute} from 'workbox-routing';
+import {NetworkFirst} from 'workbox-strategies';
+// import {BackgroundSyncPlugin} from 'workbox-background-sync';
+
+// import workbox from "workbox-sw"
+
+    registerRoute(
         /\/api\/(.*)\//,
-        workbox.strategies.networkFirst({
+        NetworkFirst({
             networkTimeoutSeconds: 1,
             cacheName: 'api',
         })
     );
-    workbox.routing.registerRoute(
+    registerRoute(
         /\/assets\/(.*)\//,
-        workbox.strategies.networkFirst({
+        NetworkFirst({
             networkTimeoutSeconds: 1,
             cacheName: 'assets',
         })
     );
-    workbox.routing.registerRoute(
+    registerRoute(
         /^((?!assets|livereload|api\/).)*$/,
-        workbox.strategies.networkFirst({
+        NetworkFirst({
             networkTimeoutSeconds: 1,
             cacheName: 'pages',
         })
     );
-}
