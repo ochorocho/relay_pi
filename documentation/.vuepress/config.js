@@ -15,7 +15,6 @@ module.exports = {
         nav: [],
         lastUpdated: true,
         displayAllHeaders: true,
-        // Assumes GitHub. Can also be a full GitLab url.
         repo: 'ochorocho/relay_pi/',
         repoLabel: 'Code',
         docsDir: 'docs',
